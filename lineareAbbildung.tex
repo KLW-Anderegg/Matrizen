@@ -1,0 +1,303 @@
+
+\section{Lineare Abbildungen}
+In diesem Abschnitt werden wir eine spezielle Art von geometrischen Abbildungen untersuchen. Dazu werden wir Punkte in der Ebene oder im dreidimensionalen Raum durch ihre Ortsvektoren angeben. Der Punkt \( P = (2, 3) \) z.B. wird dann durch den Vektor \( \vec{p} = \begin{pmatrix} 2 \\ 3 \end{pmatrix} \) angegeben. So können wir Abbildungen durch ihre Wirkung auf die Ortsvektoren beschreiben. Sei z.B. \( T \) die Translation (=Parallelverschiebung) um den Vektor \( \begin{pmatrix} 3 \\ 1 \end{pmatrix} \). Unter dieser Verschiebung wird \( P = (2, 3) \) auf \( P' = (5, 4) \) abgebildet. Das schreiben wir so:
+
+\[
+T \begin{pmatrix} 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 5 \\ 4 \end{pmatrix}
+\]
+
+
+
+\begin{center}
+    \begin{tikzpicture}
+        % Achsen
+        \draw[->, thick] (-1,0) -- (6,0) node[below] {\small x};
+        \draw[->, thick] (0,-1) -- (0,5) node[left] {\small y};
+    
+        % Punkte
+        \filldraw[blue] (2,3) circle (1pt) node[left] {\small \(P(2,3)\)};
+        \filldraw[red] (5,4) circle (1pt) node[right] {\small \(P'(5,4)\)};
+        % Ortsvektoren
+        \draw[->, dashed, blue, thick] (0,0) -- (2,3) node[midway, left] {\small \(\vec{p}\)};
+        \draw[->, dashed, red, thick] (0,0) -- (5,4) node[midway, below right] {\small \(\vec{p'}\)};
+    
+        % Translationsvektor
+        \draw[->] (2,3) -- (5,4) node[midway, above] {\small \(\begin{pmatrix} 3 \\ 1 \end{pmatrix}\)};
+    
+    \end{tikzpicture}
+\end{center}
+
+Häufig werden wir Abbildungen wie die Translation \( T \) durch ihre Gleichung angeben:
+
+\[
+T \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x+3 \\ y+1 \end{pmatrix}
+\]
+
+\begin{LA}
+{Abbildungsgleichungen}{Abbildungsgleichungen}
+\begin{enumerate}
+    \item Bestimmen Sie das Bild von \( \begin{pmatrix} 2 \\ 3 \end{pmatrix} \) und allgemein von \( \begin{pmatrix} x \\ y \end{pmatrix} \) unter der folgenden Abbildung:
+
+\begin{enumerate}
+    \item Verschiebung um \( \begin{pmatrix} -1 \\ 3 \end{pmatrix} \).
+    % \[
+    % T \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x - 1 \\ y + 3 \end{pmatrix}
+    % \]
+
+    \item Reflexion (= Achsenspiegelung) an der $x$-Achse.
+    % \[
+    % R_x \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ -y \end{pmatrix}
+    % \]
+
+    \item Punktspiegelung am Ursprung \( O = (0,0) \).
+    % \[
+    % S_O \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -x \\ -y \end{pmatrix}
+    % \]
+
+    \item Punktspiegelung an \( (1, -2) \).
+    % \[
+    % S_{(1,-2)} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2 - x \\ -4 - y \end{pmatrix}
+    % \]
+
+    \item Rotation (= Drehung) um \( 90^\circ \) im Gegenuhrzeigersinn um den Ursprung.
+    % \[
+    % R_{90} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -y \\ x \end{pmatrix}
+    % \]
+
+    \item Streckung um den Faktor \( k = 3 \) mit Zentrum im Ursprung.
+    % \[
+    % S_3 \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 3x \\ 3y \end{pmatrix}
+    % \]
+
+    \item Spiegelung an der Geraden \( x = 3 \).
+    % \[
+    % S_{x=3} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 6 - x \\ y \end{pmatrix}
+    % \]
+\end{enumerate}
+
+\item Bestimmen Sie das Bild von \( \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} \) und allgemein von \( \begin{pmatrix} x \\ y \\ z \end{pmatrix} \) unter den folgenden Abbildungen:
+
+\begin{enumerate}
+    \item Spiegelung am Ursprung \( O = (0,0,0) \).
+    % \[
+    % S_O \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -x \\ -y \\ -z \end{pmatrix}
+    % \]
+
+    \item Spiegelung an der $yz$-Ebene.
+    % \[
+    % S_{yz} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -x \\ y \\ z \end{pmatrix}
+    % \]
+
+    \item Orthogonale (= senkrechte) Projektion auf die $xy$-Ebene.
+    % \[
+    % P_{xy} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}
+    % \]
+\end{enumerate}
+\end{enumerate}
+
+\end{LA}
+
+\clearpage
+In diesem Kapitel werden wir uns mit einer speziellen Art von Abbildungen der Ebene oder des Raumes befassen. Unter „der Ebene“ bzw. „dem Raum“ verstehen wir dabei Folgendes:
+
+
+\begin{definition}
+    {$\R^2$ und $\R^3$}{}
+    Die Menge aller Vektoren der Form \( \vec{v} = \begin{pmatrix} x \\ y \end{pmatrix} \), wobei \( x \) und \( y \) reelle Zahlen sind, nennt man \( \mathbb{R}^2 \):
+
+    \[
+    \mathbb{R}^2 = \left\{ \begin{pmatrix} x \\ y \end{pmatrix} \mid x \in \mathbb{R} \text{ und } y \in \mathbb{R} \right\}
+    \]
+
+    Analog gilt:
+
+    \[
+    \mathbb{R}^3 = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix} \mid x \in \mathbb{R} \text{ und } y \in \mathbb{R} \text{ und } z \in \mathbb{R} \right\}
+    \]
+
+\end{definition}
+	
+Unter allen Abbildungen der Ebene (oder des Raums) in sich gibt es einige mit einer speziellen Eigenschaft: die sogenannten linearen Abbildungen.
+
+\begin{definition}
+    {Lineare Abbildung}{}
+    Eine Abbildung \( f \) heisst linear, wenn für alle Vektoren \( \vec{v} \) und \( \vec{w} \) gilt:
+
+        \[
+        f(\vec{v} + \vec{w}) = f(\vec{v}) + f(\vec{w})
+        \]
+
+        und für alle Zahlen \( \lambda \in \mathbb{R} \) gilt:
+
+        \[
+        f(\lambda \cdot \vec{v}) = \lambda \cdot f(\vec{v})
+        \]
+
+\end{definition}
+
+\begin{bsp}
+{}{}
+Die Spiegelung an der $y$-Achse ist eine lineare Abbildung.
+
+\vspace*{7cm}
+
+% Die Spiegelung an der y-Achse in der Ebene hat die Gleichung:
+
+% \[
+% f: \mathbb{R}^2 \to \mathbb{R}^2, \quad f \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -x \\ y \end{pmatrix}
+% \]
+
+% Die Spiegelung an der y-Achse ist eine lineare Abbildung, denn für alle Vektoren 
+% \( \vec{v} = \begin{pmatrix} x_v \\ y_v \end{pmatrix} \) und 
+% \( \vec{w} = \begin{pmatrix} x_w \\ y_w \end{pmatrix} \) gilt:
+
+% \[
+% f(\vec{v} + \vec{w}) = f \left( \begin{pmatrix} x_v \\ y_v \end{pmatrix} + \begin{pmatrix} x_w \\ y_w \end{pmatrix} \right)
+% \]
+
+% \[
+% = f \begin{pmatrix} x_v + x_w \\ y_v + y_w \end{pmatrix} = \begin{pmatrix} -(x_v + x_w) \\ y_v + y_w \end{pmatrix}
+% \]
+
+% \[
+% = \begin{pmatrix} -x_v - x_w \\ y_v + y_w \end{pmatrix} = \begin{pmatrix} -x_v \\ y_v \end{pmatrix} + \begin{pmatrix} -x_w \\ y_w \end{pmatrix}
+% \]
+
+% \[
+% = f(\vec{v}) + f(\vec{w})
+% \]
+
+% und 
+
+% \[
+% f(\lambda \cdot \vec{v}) = f \left( \lambda \cdot \begin{pmatrix} x \\ y \end{pmatrix} \right) = f \begin{pmatrix} \lambda \cdot x \\ \lambda \cdot y \end{pmatrix}
+% \]
+
+% \[
+% = \begin{pmatrix} -\lambda \cdot x \\ \lambda \cdot y \end{pmatrix} = \begin{pmatrix} \lambda \cdot (-x) \\ \lambda \cdot y \end{pmatrix} = \lambda \cdot \begin{pmatrix} -x \\ y \end{pmatrix}
+% \]
+
+% \[
+% = \lambda \cdot f(\vec{v})
+% \]
+
+% Damit ist gezeigt, dass die Spiegelung an der y-Achse eine lineare Abbildung ist.
+
+\end{bsp}
+\clearpage
+
+\begin{ueb}{Zu lineare Abbildungen}{lineareAbbildung}
+    \begin{enumerate}
+        \item Beschreiben Sie die folgende Abbildung in Worten (Spiegelung, Verschiebung, Drehung, Projektion, ...). Ist sie linear?
+        \begin{enumerate}
+            \item \( f \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x+1 \\ y+1 \end{pmatrix} \)
+            \item \( f \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} y \\ x \end{pmatrix} \)
+            \item \( f \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2x \\ 2y \end{pmatrix} \)
+            \item \( f \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ 0 \end{pmatrix} \)
+            \item \( f \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} x \\ -y \\ z \end{pmatrix} \)
+            \item \( f \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ y \\ z \end{pmatrix} \)
+        \end{enumerate}
+    
+        \item Für lineare Abbildungen gilt für alle $\lambda \in \R$, dass \( f(\lambda \cdot \vec{v}) = \lambda \cdot f(\vec{v}) \) ist. Wenn man \( \lambda = 0 \) wählt, folgt, dass lineare Abbildungen den Nullvektor stets auf sich selbst abbilden. Nutzen Sie diese Eigenschaft, um drei Abbildungen in \Cref{LA:Abbildungsgleichungen} zu finden, die nicht linear sind.
+    
+        \item Sei \( f \) eine lineare Abbildung mit 
+        \[
+        f \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}, 
+        \quad f \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}.
+        \]
+        Was ist dann \( f \begin{pmatrix} 4 \\ 5 \end{pmatrix} \)?  
+        Tipp: Schreibe \( \begin{pmatrix} 4 \\ 5 \end{pmatrix} \) als  
+        \[
+        \begin{pmatrix} 4 \\ 5 \end{pmatrix} = 4 \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix} + 5 \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+        \]
+        und verwende die Linearität.
+    
+      
+            \item Sei \( f \) eine lineare Abbildung mit  
+            \[
+            f \begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}, 
+            \quad f \begin{pmatrix} 3 \\ -2 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}.
+            \]
+            Was ist dann \( f \begin{pmatrix} 1 \\ 11 \end{pmatrix} \)?  
+            Tipp: Gehen Sie analog zu Aufgabe 3) vor.
+    
+            \item Challenge: Sei  
+            \[
+            f \begin{pmatrix} x \\ y \end{pmatrix} =
+            \begin{cases} 
+                \begin{pmatrix} 0 \\ x^2 / y \end{pmatrix}, & \text{falls } y \neq 0 \\[8pt]
+                \vec{0}, & \text{falls } y = 0
+            \end{cases}
+            \]
+            Zeigen Sie, dass \( f \) die Eigenschaft \( f(\lambda \cdot \vec{v}) = \lambda \cdot f(\vec{v}) \) erfüllt, aber nicht die Eigenschaft  
+            \[
+            f(\vec{v} + \vec{w}) = f(\vec{v}) + f(\vec{w}).
+            \]
+            Tipp: Beim Prüfen der Eigenschaft \( f(\lambda \cdot \vec{v}) = \lambda \cdot f(\vec{v}) \) müssen Sie drei Fälle unterscheiden:
+            \begin{enumerate}
+                \item \( \lambda = 0 \),
+                \item \( \lambda \neq 0 \) und \( y = 0 \),
+                \item \( \lambda \neq 0 \) und \( y \neq 0 \).
+            \end{enumerate}
+        
+    \end{enumerate}
+    
+\end{ueb}
+\clearpage
+\emph{Lösungen}
+\begin{enumerate}
+    \item Abbildungen beschreiben...
+    \begin{enumerate}
+        \item Verschiebung um \( \begin{pmatrix} 1 \\ 1 \end{pmatrix} \), nicht linear.
+        \item Spiegelung an \( y = x \), linear.
+        \item Streckung um den Faktor \( k=2 \) mit Zentrum im Ursprung, linear.
+        \item Orthogonale Projektion auf die $x$-Achse, linear.
+        \item Spiegelung an der $xz$-Ebene, linear.
+        \item Orthogonale Projektion auf die $yz$-Ebene, linear.
+    \end{enumerate}
+    
+    \item Siehe oben.
+
+    \item Berechnung:
+    \[
+    f \begin{pmatrix} 4 \\ 5 \end{pmatrix} = \begin{pmatrix} 3 \\ 17 \end{pmatrix}
+    \]
+
+    \item Lösung für \( f \begin{pmatrix} 1 \\ 11 \end{pmatrix} \):
+    \[
+    \begin{pmatrix} 1 \\ 11 \end{pmatrix} = a \cdot \begin{pmatrix} 2 \\ 1 \end{pmatrix} + b \cdot \begin{pmatrix} 3 \\ -2 \end{pmatrix} \Rightarrow a = 5, \quad b = -3
+    \]
+
+    \[
+    f \begin{pmatrix} 1 \\ 11 \end{pmatrix} = 5 \cdot f \begin{pmatrix} 2 \\ 1 \end{pmatrix} - 3 \cdot f \begin{pmatrix} 3 \\ -2 \end{pmatrix} = \begin{pmatrix} -11 \\ -7 \end{pmatrix}
+    \]
+
+    \item Behauptung 1: \( f(\lambda \cdot \vec{v}) = \lambda \cdot f(\vec{v}) \)
+    
+    Beweis: Fallunterscheidung
+    \begin{itemize}
+        \item Falls \( \lambda = 0 \):
+        \[
+        f(\lambda \cdot \vec{v}) = f(\vec{0}) = \vec{0}, \quad \lambda f(\vec{v}) = 0 \cdot f(\vec{v}) = \vec{0}
+        \]
+        
+        \item Falls \( \lambda \neq 0, y = 0 \):
+        \[
+        f(\lambda \cdot \vec{v}) = \vec{0}, \quad \lambda f(\vec{v}) = \vec{0}
+        \]
+        
+        \item Falls \( \lambda \neq 0, y \neq 0 \):
+        \[
+        f(\lambda \cdot \vec{v}) = f \begin{pmatrix} \lambda x \\ \lambda y \end{pmatrix} = \begin{pmatrix} 0 \\ \frac{(\lambda x)^2}{\lambda y} \end{pmatrix} = \begin{pmatrix} 0 \\ \lambda \frac{x^2}{y} \end{pmatrix} = \lambda f(\vec{v})
+        \]
+    \end{itemize}
+
+    Behauptung 2: \( f(\vec{v} + \vec{w}) = f(\vec{v}) + f(\vec{w}) \) stimmt nicht immer.
+
+    Beweis: Es reicht ein Gegenbeispiel:
+    \[
+    f \left( \begin{pmatrix} 1 \\ 1 \end{pmatrix} + \begin{pmatrix} 0 \\ -1 \end{pmatrix} \right) = f \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \vec{0} \neq f \begin{pmatrix} 1 \\ 1  \end{pmatrix} + f \begin{pmatrix} 0\\ -1  \end{pmatrix} = \begin{pmatrix} 0 \\ 1  \end{pmatrix} +  \begin{pmatrix} 0\\ 0  \end{pmatrix} = \begin{pmatrix}
+        0\\1
+    \end{pmatrix}
+    \]
+\end{enumerate}

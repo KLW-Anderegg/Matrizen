@@ -1,0 +1,462 @@
+\section{Kern und Bild}
+
+In den Übungen zum vorangegangenen Kapitel sind wir auf die folgenden Gleichungssysteme gestossen:
+
+\[
+\begin{cases}
+-4x + 6y = 5 \\
+6x - 9y = -8
+\end{cases}
+\quad \text{und} \quad
+\begin{cases}
+-4x + 6y = 5 \\
+6x - 9y = -7.5
+\end{cases}
+\]
+
+Da 
+\[
+\det \begin{pmatrix} -4 & 6 \\ 6 & -9 \end{pmatrix} = 0,
+\]
+kann man diese Gleichungssysteme nicht mit der Inversen der Matrix lösen.
+
+Wenn man sie auf konventionelle Art löst, stellt man leicht fest, dass das linke Gleichungssystem keine Lösung hat, das rechte hingegen unendlich viele.
+
+\medskip
+
+In diesem Kapitel werden wir Begriffe und Ideen einführen, mit denen wir einfach feststellen können, ob so ein System lösbar ist.
+
+\medskip
+
+Zunächst einmal wollen wir die Situation geometrisch auffassen:  
+Gesucht ist ein Vektor
+\[
+\vec{v} = \begin{pmatrix} x \\ y \end{pmatrix}
+\]
+mit der Eigenschaft, dass das Bild \( A\vec{v} \) unter der Matrix \( A \) gerade der Vektor
+\[
+\begin{pmatrix} 5 \\ -8 \end{pmatrix} \quad \text{bzw.} \quad \begin{pmatrix} 5 \\ -7.5 \end{pmatrix}
+\]
+ist.
+
+\medskip
+
+Dazu führen wir den Begriff der Bildmenge einer linearen Abbildung ein:
+\begin{definition}
+    {Kern und Bild}{}
+   
+
+Sei \( f \colon \mathbb{R}^2 \to \mathbb{R}^2 \) eine Abbildung.  
+Die Menge aller Bilder von \( f \) nennt man das \emph{Bild} von \( f \) und schreibt dafür:
+\[
+\operatorname{im}(f) = \left\{ f(\vec{v}) \mid \vec{v} \in \mathbb{R}^2 \right\}
+\]
+Die Bezeichnung \( \operatorname{im} \) steht für \emph{image} (englisch für Bild).
+
+\medskip
+
+Die Menge aller Vektoren, die auf den Nullvektor abgebildet werden, nennt man den \emph{Kern} von \( f \) und schreibt dafür:
+\[
+\ker(f) = \left\{ \vec{v} \in \mathbb{R}^2 \mid f(\vec{v}) = \vec{0} \right\}
+\]
+
+\end{definition}
+\textbf{Bemerkung}: Manchmal spricht man auch vom Kern und Bild einer Matrix und meint dabei den Kern und das Bild der zugehörigen linearen Abbildung.
+
+Wie bestimmt man konkret das Bild oder den Kern einer linearen Abbildung? Die folgenden Überlegungen geben eine Antwort darauf:
+
+
+% Die lineare Abbildung \( f \) habe die Matrix
+% \[
+% A = \begin{pmatrix} -4 & 6 \\ 6 & -9 \end{pmatrix}.
+% \]
+% Für das Bild eines allgemeinen Vektors
+% \[
+% \begin{pmatrix} x \\ y \end{pmatrix}
+% \]
+% gilt:
+% \begin{align*}
+% A \begin{pmatrix} x \\ y \end{pmatrix}
+% &= A \left( x \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right) \\
+% &= x \cdot A \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot A \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+% &= x \begin{pmatrix} -4 \\ 6 \end{pmatrix} + y \begin{pmatrix} 6 \\ -9 \end{pmatrix}
+% \end{align*}
+
+% Anders gesagt:  
+% Alle möglichen Bildpunkte von \( f \) können als eine \emph{Linearkombination} der beiden Spaltenvektoren
+% \[
+% \begin{pmatrix} -4 \\ 6 \end{pmatrix} \quad \text{und} \quad \begin{pmatrix} 6 \\ -9 \end{pmatrix}
+% \]
+% dargestellt werden.
+
+% \medskip
+
+% In diesem speziellen Beispiel kann das Resultat noch vereinfacht werden, wenn man berücksichtigt, dass die Spalten \emph{linear abhängig} sind:
+% \[
+% \begin{pmatrix} 6 \\ -9 \end{pmatrix} = -\frac{3}{2} \cdot \begin{pmatrix} -4 \\ 6 \end{pmatrix}.
+% \]
+
+% Damit folgt:
+
+
+
+% \begin{align*}
+% A \begin{pmatrix} x \\ y \end{pmatrix}
+% &= x \begin{pmatrix} -4 \\ 6 \end{pmatrix} + y \begin{pmatrix} 6 \\ -9 \end{pmatrix} \\
+% &= x \begin{pmatrix} -4 \\ 6 \end{pmatrix} - \frac{3}{2} y \begin{pmatrix} -4 \\ 6 \end{pmatrix} \\
+% &= \underbrace{\left(x - \frac{3}{2} y\right)}_{=\,t} \begin{pmatrix} -4 \\ 6 \end{pmatrix} \\
+% &= t \begin{pmatrix} -4 \\ 6 \end{pmatrix}
+% \end{align*}
+
+% Die Vektoren in \( \operatorname{im}(f) \) sind demnach alle Vielfache von \( \begin{pmatrix} -4 \\ 6 \end{pmatrix} \).  
+% Somit gilt:
+% \[
+% \operatorname{im}(f) = \left\{ t \begin{pmatrix} -4 \\ 6 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+% \]
+
+% Anders gesagt:  
+% Unabhängig davon, welchen Vektor \( \vec{v} \in \mathbb{R}^2 \) man wählt, liegt \( A \cdot \vec{v} \) sicher auf der Geraden mit der Parametergleichung
+% \[
+% \vec{r}(t) = t \begin{pmatrix} -4 \\ 6 \end{pmatrix}.
+% \]
+
+% Das erklärt auch, warum das Gleichungssystem
+% \[
+% \begin{cases}
+% -4x + 6y = 5 \\
+% 6x - 9y = -8
+% \end{cases}
+% \]
+% \emph{keine Lösung} hat: Der rechte Vektor \( \begin{pmatrix} 5 \\ -8 \end{pmatrix} \) liegt nicht auf der Geraden \( \vec{r}(t) \)!
+
+% \medskip
+
+% \textbf{Kern:} Der Kern von \( f \) ist die Menge aller Vektoren, die auf den Nullvektor abgebildet werden.  
+% Mit anderen Worten: Der Kern von \( f \) ist die Lösungsmenge der Gleichung
+% \[
+% A \begin{pmatrix} x \\ y \end{pmatrix} = \vec{0}.
+% \]
+
+% Analog zur obigen Rechnung ergibt sich:
+% \begin{align*}
+% A \begin{pmatrix} x \\ y \end{pmatrix}
+% &= x \begin{pmatrix} -4 \\ 6 \end{pmatrix} + y \begin{pmatrix} 6 \\ -9 \end{pmatrix} \\
+% &= \left(x - \frac{3}{2} y\right) \begin{pmatrix} -4 \\ 6 \end{pmatrix} = \vec{0}
+% \end{align*}
+
+% Daraus folgt:
+% \[
+% x - \frac{3}{2} y = 0 \quad \Rightarrow \quad x = \frac{3}{2} y
+% \quad \Rightarrow \quad
+% \begin{pmatrix} x \\ y \end{pmatrix} = t \begin{pmatrix} 3 \\ 2 \end{pmatrix}, \quad t \in \mathbb{R}.
+% \]
+
+% Also:
+% \[
+% \ker(f) = \left\{ t \begin{pmatrix} 3 \\ 2 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+% \]
+
+% Anders gesagt: Für alle Vektoren \( \vec{w} \), welche auf der Geraden
+% \[
+% \vec{r}(t) = t \begin{pmatrix} 3 \\ 2 \end{pmatrix}
+% \]
+% liegen, gilt:
+% \[
+% A \cdot \vec{w} = \vec{0}.
+% \]
+
+\begin{bsp}
+    {Kern und Bild von  \( A = \begin{pmatrix} -4 & 6 \\ 6 & -9 \end{pmatrix} \)}{}
+
+    \vspace*{19 cm}
+\end{bsp}
+\clearpage
+\begin{satz}
+    {Berechnung von Kern und Bild}{}
+    
+Seien \( \vec{v}_1 \) und \( \vec{v}_2 \) die Spalten einer \( 2 \times 2 \)-Matrix \( A \).
+
+\medskip
+
+Das \textbf{Bild} der Matrix ist die Menge aller Linearkombinationen der Spaltenvektoren:
+\[
+\operatorname{im}(A) = \left\{ t \cdot \vec{v}_1 + s \cdot \vec{v}_2 \;\middle|\; t, s \in \mathbb{R} \right\}
+\]
+
+\medskip
+
+Der \textbf{Kern} einer linearen Abbildung besteht aus den Vektoren \( \begin{pmatrix} x \\ y \end{pmatrix} \), für welche gilt:
+\[
+x \cdot \vec{v}_1 + y \cdot \vec{v}_2 = \vec{0}
+\]
+
+\end{satz}
+
+\begin{bsp}
+    {Kern und Bild von $A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix}$ }{}
+
+% Gegeben sei die Matrix
+% \[
+% A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix}.
+% \]
+
+Die beiden Spalten sind linear abhängig.  
+Also gilt:
+\[
+\operatorname{im}(A) = \left\{ t \begin{pmatrix} 1 \\ 3 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+\]
+
+Dreimal die erste Spalte minus die zweite ergibt den Nullvektor, also ist:
+\[
+\ker(A) = \left\{ t \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+\]
+
+\end{bsp}
+
+\begin{bsp}
+{Kern und Bild von $B = \begin{pmatrix} 1 & 3 \\ 4 & -1 \end{pmatrix}.$}{}
+
+% Gegeben sei die Matrix
+% \[
+% B = \begin{pmatrix} 1 & 3 \\ 4 & -1 \end{pmatrix}.
+% \]
+
+Die beiden Spalten sind linear unabhängig.  
+Also gilt:
+\[
+\operatorname{im}(B) = \left\{ t \begin{pmatrix} 1 \\ 4 \end{pmatrix} + s \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t, s \in \mathbb{R} \right\} = \mathbb{R}^2.
+\]
+
+Da die Spalten linear unabhängig sind, hat die Gleichung
+\[
+x \cdot \vec{v}_1 + y \cdot \vec{v}_2 = \vec{0}
+\]
+nur die triviale Lösung \( x = 0 \), \( y = 0 \).  
+Also gilt:
+\[
+\ker(B) = \left\{ \vec{0} \right\}.
+\]
+
+\end{bsp}
+
+
+
+Die beiden Beispiele machen deutlich, dass Bild und der Kern einer linearen Abbildung ganz spezielle Teilmengen von $\R^2$ bzw. $\R^3$ sind. Es sind sogenannte \emph{Unterräume}:
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+\begin{definition}
+    {Unterraum}{}
+
+Ein \textbf{Unterraum} von \( \mathbb{R}^2 \)  ist eine Teilmenge \( U \subseteq \mathbb{R}^2 \) mit folgenden Eigenschaften:
+\begin{itemize}
+  \item Für alle \( \vec{v}, \vec{w} \in U \) gilt: \( \vec{v} + \vec{w} \in U \)
+  \item Für alle \( \vec{v} \in U \) und alle \( \lambda \in \mathbb{R} \) gilt: \( \lambda \vec{v} \in U \)
+\end{itemize}
+
+    \end{definition}
+
+\textbf{Bemerkungen:} 
+
+\begin{itemize}
+  \item Ein Unterraum enthält immer den Nullvektor: \( \vec{0} \in U \).
+  
+  \item Es gibt drei Arten von Unterräumen in \( \mathbb{R}^2 \):
+  \begin{itemize}
+    \item Der \textbf{nulldimensionale} Unterraum:  
+    \[
+    U = \{ \vec{0} \}
+    \]
+    
+    \item \textbf{Eindimensionale} Unterräume der Form:
+    \[
+    U = \{ t \cdot \vec{v} \mid t \in \mathbb{R} \}
+    \]
+    Dies sind genau die Geraden durch den Ursprung.
+
+    \item Der \textbf{zwei-dimensionale} Unterraum von \( \mathbb{R}^2 \):
+    \[
+    U = \mathbb{R}^2
+    \]
+  \end{itemize}
+\end{itemize}
+\begin{satz}
+    {}{}
+    Kern und Bild einer linearen Abbildung sind Unterräume von \( \mathbb{R}^2 \).
+\end{satz}
+\begin{proof}
+    
+Wir beweisen die Aussage für den Kern einer Matrix bzw. linearen Abbildung.
+
+\begin{itemize}
+    \item Seien \( \vec{v} \) und \( \vec{w} \) zwei Vektoren in \( \ker(f) \).  
+Weil \( f \) linear ist, gilt:
+\[
+f(\vec{v} + \vec{w}) = f(\vec{v}) + f(\vec{w}) = \vec{0} + \vec{0} = \vec{0}
+\]
+Somit ist \( \vec{v} + \vec{w} \in \ker(f) \).
+
+\item Sei nun \( \vec{v} \in \ker(f) \) und \( \lambda \in \mathbb{R} \).  
+Wegen der Linearität von \( f \) gilt:
+\[
+f(\lambda \vec{v}) = \lambda f(\vec{v}) = \lambda \cdot \vec{0} = \vec{0}
+\]
+Also ist auch \( \lambda \vec{v} \in \ker(f) \).
+\end{itemize}
+
+
+\end{proof}
+
+
+\begin{satz}
+    {Äquivalente Aussagen für lineare Abbildungen}{}
+
+Sei \( f \colon \mathbb{R}^2 \to \mathbb{R}^2 \) eine lineare Abbildung mit der zugehörigen Matrix \( A \).  
+Dann sind die folgenden Aussagen äquivalent:
+
+\begin{enumerate}
+  \item \( \det(A) \neq 0 \)
+  \item Die Spalten von \( A \) sind linear unabhängig.
+  \item \( \operatorname{im}(f) = \mathbb{R}^2 \)
+  \item \( \ker(f) = \{ \vec{0} \} \)
+\end{enumerate}
+
+\end{satz}
+\begin{proof}
+    
+
+Wir beweisen die folgenden Implikationen:  
+\[
+1 \Rightarrow 2 \Rightarrow 3 \Rightarrow 4 \Rightarrow 1
+\]
+
+\begin{description}
+  \item[\(1 \Rightarrow 2\): (Beweis durch Widerspruch)]
+  Angenommen, es gäbe eine Matrix \( A \) mit \( \det(A) \neq 0 \), deren Spalten linear abhängig sind.  
+  Dann hat \( A \) die Form:
+  \[
+  A = \begin{pmatrix} a & k \cdot a \\ b & k \cdot b \end{pmatrix}
+  \]
+  Damit gilt:
+  \[
+  \det(A) = a \cdot k b - k a \cdot b = 0
+  \]
+  Widerspruch zu \( \det(A) \neq 0 \). Also müssen die Spalten linear unabhängig sein.
+
+  \item[\(2 \Rightarrow 3\):]  
+  Das folgt direkt daraus, dass das Bild einer linearen Abbildung aus den Linearkombinationen der Spalten der Matrix besteht.  
+  Sind die Spalten linear unabhängig, so spannen sie den gesamten Raum \( \mathbb{R}^2 \) auf. Also:
+  \[
+  \operatorname{im}(f) = \mathbb{R}^2.
+  \]
+
+  \item[\(3 \Rightarrow 4\):]  
+  Seien \( \vec{v}_1 \) und \( \vec{v}_2 \) die beiden Spaltenvektoren der Matrix.  
+  Da das Bild von \( f \) aus den Linearkombinationen der Spalten besteht und \( \operatorname{im}(f) = \mathbb{R}^2 \) ist, müssen die Spalten linear unabhängig sein.  
+  Damit hat die Gleichung
+  \[
+  x \cdot \vec{v}_1 + y \cdot \vec{v}_2 = \vec{0}
+  \]
+  nur die triviale Lösung \( x = y = 0 \), und es folgt:
+  \[
+  \ker(f) = \{ \vec{0} \}
+  \]
+
+  \item[\(4 \Rightarrow 1\): (Beweis durch Widerspruch)]
+  Sei:
+  \[
+  A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad \text{und angenommen: } \det(A) = 0.
+  \]
+  Betrachte den Vektor:
+  \[
+  \vec{v} = \begin{pmatrix} d \\ -c \end{pmatrix}
+  \]
+  Dann gilt:
+  \[
+  f(\vec{v}) = A \cdot \vec{v} = 
+  \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+  \begin{pmatrix} d \\ -c \end{pmatrix}
+  = \begin{pmatrix} ad - bc \\ cd - dc \end{pmatrix}
+  = \begin{pmatrix} \det(A) \\ 0 \end{pmatrix}
+  = \vec{0}
+  \]
+  Also \( \vec{v} \in \ker(f) \Rightarrow \vec{v} = \vec{0} \Rightarrow \begin{pmatrix} d \\ -c \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \)
+
+  Analog für:
+  \[
+  \vec{w} = \begin{pmatrix} b \\ -a \end{pmatrix}, \quad
+  f(\vec{w}) = A \cdot \vec{w} = \begin{pmatrix} ab - ba \\ cb - da \end{pmatrix}
+  = \begin{pmatrix} 0 \\ -\det(A) \end{pmatrix}
+  = \vec{0}
+  \Rightarrow \vec{w} = \vec{0}
+  \]
+
+  Damit hat \( A \) die Form:
+  \[
+  A = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+  \]
+  Widerspruch zu \( \ker(f) = \{ \vec{0} \} \).  
+  Also muss gelten: \( \det(A) \neq 0 \).
+\end{description}
+
+\end{proof}
+
+\begin{ueb}
+    {}{}
+
+\begin{enumerate}
+  \item Bestimmen Sie den Kern und das Bild der folgenden Matrizen.  
+  \begin{enumerate}
+    \item \( A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \)
+    \item \( B = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \)
+    \item \( C = \begin{pmatrix} 2 & 12 \\ -1 & -6 \end{pmatrix} \)
+    \item \( D = \begin{pmatrix} -6 & 7 \\ 12 & -14 \end{pmatrix} \)
+    \item \( E = \begin{pmatrix} 1 & 3 \\ 0 & 0 \end{pmatrix} \)
+  \end{enumerate}
+
+  \item Sei \( f \) die Projektion auf die Gerade \( y = x \) in Richtung  
+  \( \vec{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} \).  
+  Bestimmen Sie den Kern und das Bild von \( f \).
+
+  \item Geben Sie eine Matrix an, deren Kern die Gerade  
+  \( g \colon \vec{r}(t) = t \begin{pmatrix} 1 \\ 2 \end{pmatrix} \)  
+  und deren Bild die \( y \)-Achse ist.
+
+  \item Geben Sie eine Matrix \( A \) an, deren Kern und Bild übereinstimmen.  
+  Was ergibt \( A^2 \)?
+
+  \item Sei \( f \) die Spiegelung an der \( xz \)-Ebene.  
+  Bestimmen Sie den Kern und das Bild.
+
+  \item Sei \( f \) die orthogonale Projektion auf die \( xz \)-Ebene.  
+  Bestimmen Sie den Kern und das Bild.
+
+  \item \textbf{Challenges:}
+  \begin{enumerate}
+    \item Beweisen Sie, dass das Bild einer linearen Abbildung ein Unterraum ist.\\
+    \emph{Tipp:} \( \vec{w} \) ist genau dann ein Element von \( \operatorname{im}(f) \), wenn es ein  
+    \( \vec{v} \in \mathbb{R}^2 \) mit \( f(\vec{v}) = \vec{w} \) gibt. Gibt es dann einen Vektor  
+    \( \vec{x} \) mit \( f(\vec{x}) = \lambda \vec{w} \)? Welchen?
+
+    \item Beweisen Sie die folgende Aussage:  
+    Sei \( f \) eine lineare Abbildung mit \( \ker(f) = \{ \vec{0} \} \).  
+    Dann ist \( f \) injektiv.\\
+    \emph{Tipp:} Injektiv bedeutet: Aus \( f(\vec{v}) = f(\vec{w}) \) folgt \( \vec{v} = \vec{w} \).  
+    Betrachten Sie \( f(\vec{v} - \vec{w}) \).
+  \end{enumerate}
+\end{enumerate}
+
+\end{ueb}
+\clearpage
+\emph{Lösungen:}

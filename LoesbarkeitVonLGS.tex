@@ -1,0 +1,217 @@
+\section{Lösbarkeit von linearen Gleichungssystemen}
+\label{sec:LoesbarkeitVonLGS}
+In den Übungen zum vorangegangenen Kapitel sind wir auf die folgenden Gleichungssysteme gestossen:
+
+\[
+\begin{cases}
+-4x + 6y = 5 \\
+6x - 9y = -8
+\end{cases}
+\quad \text{und} \quad
+\begin{cases}
+-4x + 6y = 5 \\
+6x - 9y = -7.5
+\end{cases}
+\]
+
+Da 
+\[
+\det \begin{pmatrix} -4 & 6 \\ 6 & -9 \end{pmatrix} = 0,
+\]
+kann man diese Gleichungssysteme nicht mit der Inversen der Matrix lösen.
+
+Wenn man sie auf konventionelle Art löst, stellt man leicht fest, dass das linke Gleichungssystem keine Lösung hat, das rechte hingegen unendlich viele.
+
+\medskip
+
+In diesem Kapitel werden wir Begriffe und Ideen einführen, mit denen wir einfach feststellen können, ob so ein System lösbar ist.
+
+Zunächst einmal wollen wir die Situation geometrisch auffassen:  
+Gesucht ist ein Vektor
+\[
+\vec{v} = \begin{pmatrix} x \\ y \end{pmatrix}
+\]
+mit der Eigenschaft, dass das Bild \( A\vec{v} \) unter der Matrix \( A \) gerade der Vektor
+\[
+\begin{pmatrix} 5 \\ -8 \end{pmatrix} \quad \text{bzw.} \quad \begin{pmatrix} 5 \\ -7.5 \end{pmatrix}
+\]
+ist.
+
+Allgemein werden wir uns fragen, ob es zu einem Vektor \( \vec{b} \) einen Vektor \( \vec{v} \) gibt, so dass
+\[
+A\vec{v} = \vec{b}
+\]
+
+\subsection{Homogene Systeme}
+\label{sec:HomogeneSysteme}
+Wir beginnen mit dem einfachsten Fall, den sogenannten \emph{homogenen Systemen}:
+\begin{definition}{Homogenes Gleichungssystem}{}
+Ein \emph{homogenes lineares Gleichungssystem} ist ein System der Form
+\[
+A\vec{v} = \vec{0} \\
+\]
+
+\end{definition}
+
+Wenn die Matrix $A$ invertierbar ist, dann hat das Gleichungssystem nur den Nullvektor als Lösung. 
+In diesem Fall gilt nämlich:
+$$ \vec{v} = A^{-1}\cdot \vec{0} = \vec{0}.$$
+
+\begin{bsp}{}{}
+Sei $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$. Dann ist $A$ invertierbar ($\det A = -2 \neq0$), und das Gleichungssystem
+\[
+\begin{cases}
+x+2y = 0 \\
+3x+4y = 0
+\end{cases}
+\]
+hat nur die triviale Lösung $\begin{pmatrix}
+    x \\ y 
+\end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$.
+\end{bsp}
+
+Wenn die Matrix $A$ nicht invertierbar ist, dann hat das Gleichungssystem unendlich viele Lösungen. Diese Tatsache soll in der folgenden Lernaufgabe untersucht werden.
+
+\begin{LA}{Homogene LGS mit singulärer Matrix}{}
+    Betrachten Sie zuerst eine konkrete Matrix $A$:
+    \[
+    A = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}
+    \]
+    \begin{enumerate}
+        \item Zeigen Sie, dass $A$ nicht invertierbar ist.
+        \item Zeigen Sie, dass der Vektor $\vec{v} = \begin{pmatrix}
+            2 \\ -1
+        \end{pmatrix}$ eine Lösung des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        ist.
+        \item Zeigen Sie, dass auch der Vektor $\vec{v} = \begin{pmatrix}
+            4 \\ -2
+        \end{pmatrix}$ eine Lösung des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        ist.
+        \item Begründen Sie, dass es unendlich viele Lösungen des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        gibt.
+    \end{enumerate}
+    Als nächstes untersuchen wir die allgemeine Situation. Sei $A$ die Matrix
+    $$ A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+    mit $\det A = ad - bc = 0$.
+    \begin{enumerate}[resume]
+        \item Zeigen Sie dass der Vektor $\vec{v} = \begin{pmatrix}
+            -b \\ a
+        \end{pmatrix}$ eine Lösung des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        ist.
+        \item Zeigen Sie, dass auch der Vektor $\vec{v} = \begin{pmatrix}
+            d \\ -c
+        \end{pmatrix}$ eine Lösung des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        ist.
+        \item Begründen Sie, dass es unendlich viele Lösungen des Gleichungssystems
+        $
+        A\vec{v} = \vec{0}
+        $
+        gibt.
+        \begin{enumerate}
+            \item Für den Fall, dass $a=b=c=d=0$ ist.
+            \item Für den Fall, dass ein Eintrag von $A$ ungleich null ist.
+                \end{enumerate}
+    \end{enumerate}
+\end{LA}
+\clearpage
+\begin{definition}
+    {Kern}{}
+
+Sei \( A \) eine Matrix.  
+
+Die Menge aller Vektoren, die auf den Nullvektor abgebildet werden, nennt man den \emph{Kern} von \( A \) und schreibt dafür:
+\[
+\ker(A) = \left\{ \vec{v} \in \mathbb{R}^2 \mid A\cdot\vec{v} = \vec{0} \right\}
+\]
+Der Kern ist die Menge aller Lösungen des homogenen Gleichungssystems
+\[
+A\cdot\vec{v} = \vec{0} = \vec{0}
+\]
+\end{definition}
+\begin{satz}
+    {}{}
+    Für den Kern einer $2\times 2$-Matrix $A$ gilt:
+    \begin{enumerate}
+        \item Falls $\det A \neq 0$ ist $\ker (A) = \{0\}$
+        \item Falls $A = \begin{pmatrix}
+            0 & 0 \\
+            0 & 0 \end{pmatrix}$ ist $\ker (A) = \mathbb{R}^2$
+        \item In allen anderen Fällen ist $\ker (A)$ eine Gerade durch den Ursprung.
+    \end{enumerate}
+\end{satz}
+
+\begin{bsp}
+{Kern von $B = \begin{pmatrix} 1 & 3 \\ 4 & -1 \end{pmatrix}.$}{}
+
+
+Es gilt $\det B = -13 \neq 0$, also 
+
+\[
+\ker(B) = \left\{ \vec{0} \right\}.
+\]
+
+\end{bsp}
+
+
+\begin{bsp}
+    {Kern von $A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix}$ }{}
+
+
+Es gilt $\det A = 0$, also ist $A$ nicht invertierbar.
+
+Dreimal die erste Spalte minus die zweite ergibt den Nullvektor, also ist:
+\[
+\ker(A) = \left\{ t \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+\]
+
+\end{bsp}
+
+
+\subsection{Inhomogene Systeme}
+\label{sec:InhomogeneSysteme}
+\begin{definition}{Inhomogenes Gleichungssystem}{}
+Ein \emph{inhomogenes lineares Gleichungssystem} ist ein System der Form
+\[
+A\vec{v} = \vec{b} \quad \text{mit } \vec{b} \neq \vec{0}
+\]
+\end{definition}
+Wenn die Matrix $A$ invertierbar ist, dann hat das Gleichungssystem genau eine Lösung:
+\[
+\vec{v} = A^{-1}\cdot \vec{b}.\]
+\begin{bsp}
+{Inhomogenes LGS mit invertierbarer Matrix}{}
+Sei $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ und $\vec{b} = \begin{pmatrix} 5 \\ 6 \end{pmatrix}$. Dann ist $A$ invertierbar ($\det A = -2 \neq0$), und das Gleichungssystem
+\[
+\begin{cases}
+x+2y = 5 \\
+3x+4y = 6
+\end{cases}
+\]
+hat genau eine Lösung $$\begin{pmatrix}
+    x \\ y
+\end{pmatrix} = A^{-1} \cdot \begin{pmatrix}
+    5 \\ 6
+\end{pmatrix} = \frac{1}{-2} \begin{pmatrix}
+    4 & -2 \\ -3 & 1
+\end{pmatrix}\cdot \begin{pmatrix}
+    5 \\ 6
+\end{pmatrix} = \begin{pmatrix} -4 \\ 4.5 \end{pmatrix}$$
+\end{bsp}
+
+Wenn die Matrix $A$ nicht invertierbar ist, dann hat das Gleichungssystem entweder keine Lösung oder unendlich viele Lösungen. Diese Tatsache soll wieder in einer Lernaufgabe untersucht werden.
+

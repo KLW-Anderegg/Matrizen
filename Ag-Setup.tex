@@ -1,0 +1,177 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 PACKAGES	%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Codierung von in und Output
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% AMS-Pakete für Mathe
+\usepackage{amsthm,amssymb,amsmath}
+
+% Sprachpaket neue rechtschreibung
+\usepackage[ngerman]{babel} 
+
+
+\usepackage[many]{tcolorbox}
+
+%Header und Seitengrösse
+\usepackage{fancyhdr}
+\usepackage{geometry}
+
+% Paket für Links im PDF (glaubs)!
+\usepackage[hidelinks]{hyperref}
+
+%Paket um ganze pdf-File zu importieren (Arbeitsblätter aus Analysis DMK)
+\usepackage{pdfpages}
+
+%TColorbox nutzt Theoreme und bessere Verweise
+\tcbuselibrary{theorems}
+\usepackage{cleveref}
+
+%Package, um Aufgaben auf mehrere Spalten zu verteilen.
+\usepackage{tasks}
+\usepackage{multicol}
+
+%Tikz
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+
+
+
+%Programmcode-Darstellung
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{basicstyle=\ttfamily, language= Python}
+\definecolor{codekeyword}{rgb}{0.11,0.53,0.63}
+\definecolor{codenumbers}{rgb}{0.71,0.21,0.30}
+\definecolor{codeoperation}{rgb}{0.57,0.32,0.59}
+\definecolor{codecomment}{rgb}{0.17,0.59,0.28}
+\definecolor{backcolour}{rgb}{0.98,0.97,0.99}
+\definecolor{codestring}{rgb}{0.84,0.56,0.16}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codecomment},
+    keywordstyle=\color{codekeyword},
+    numberstyle=\tiny\color{black},
+    stringstyle=\color{codestring},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+
+\lstset{style=mystyle}
+
+
+
+
+
+
+
+% kein Plan, was das folgende macht... :(
+% \lstset{basicstyle=\ttfamily}
+% \makeatletter
+% \def\BState{\State\hskip-\ALG@thistlm}
+% \makeatother
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{array}
+\hypersetup{colorlinks=true}
+
+% damit kann man nummerierte Liste unterbrechen und wieder aufnehmen
+\usepackage{enumitem} 
+
+%%%CHANGE LABEL FIGURE
+\usepackage[figurename=Abbildung.]{caption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%	LAYOUT	%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{
+	a4paper,
+	total={165mm,225mm},
+	left=25mm,
+	top=35mm,
+}
+
+%keine Einrückung bei Absatz dafür Abstand
+\setlength\parindent{0pt}
+\setlength{\parskip}{1em}
+
+%Header
+\pagestyle{fancy}
+\setlength{\headheight}{13.6pt}
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\lhead[L]{M. Anderegg}
+\chead{}
+\rhead{Matrizen - \rightmark}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% TCB-Commands %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtcbtheorem
+[auto counter, number within=section, crefname={beispiel}{beispiele}, Crefname={Beispiel}{Beispiele}] % Nummerierung und Name bei Verweis
+{bsp} % Name der Umgebung \begin{bsp}
+{Beispiel} %Name der im Titel angezeigt wird
+{breakable, enhanced jigsaw, fonttitle=\bfseries, coltitle = black, colbacktitle = orange!15, righthand width=3cm,
+	sharp corners,boxrule=.4pt,colback=orange!5} %%Optionen für die Box. 
+	%Breakable und Enhanced lassen zu, dass sich die Box auf zwei Seiten verteilt.
+{bsp} %So wird intern auf die Referenz verwiesen.
+
+\newtcbtheorem[auto counter,  crefname={lernaufgabe}{lernaufgaben},
+Crefname={Lernaufgabe}{Lernaufgaben}]{LA}{Lernaufgabe}{
+	breakable, enhanced jigsaw, fonttitle=\bfseries, coltitle = black, colbacktitle = cyan!15, righthand width=3cm,
+	sharp corners,boxrule=.4pt,colback=white}{LA}
+
+\newtcbtheorem[auto counter, number within=section, Crefname={Übung}{Übungen}] {ueb}{Übung}{
+	breakable, enhanced jigsaw, fonttitle=\bfseries, coltitle = black, colbacktitle = blue!15, righthand width=3cm,
+	sharp corners,boxrule=.4pt,colback=blue!5}{uebng}
+
+
+\newtcbtheorem[auto counter, number within=section, crefname={definition}{definitionen},
+Crefname={Definition}{Definitionen}]{definition}{Definition}{
+	breakable, enhanced jigsaw, colframe=green!70!black, fonttitle=\bfseries, coltitle = white, colbacktitle = green!70!black, enhanced, attach boxed title to top left={yshift=-0.1in, xshift=0.15in},}{def}
+
+\newtcbtheorem[auto counter, number within=section, crefname={Satz}{Sätze},
+Crefname={Satz}{Sätze}]{satz}{Satz}{%
+	breakable, enhanced jigsaw, lower separated=false,
+	colframe=red!70!white, fonttitle=\bfseries, coltitle = white, colbacktitle = red!70!white, enhanced, attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+}{satz}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%% Mathe-Befehle %%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\Ra}{\Rightarrow}

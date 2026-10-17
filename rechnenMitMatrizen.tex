@@ -1,0 +1,455 @@
+\section{Rechnen mit Matrizen}
+\begin{LA}
+    {}{}
+    Mit Funktionen (oder Abbildungen) kann man rechnen!
+    \begin{enumerate}
+        \item \textbf{Zusammen:} Sei \( f(x) = x+2 \) und \( g(x) = x^2 \). Geben Sie die Gleichung der folgenden Funktionen an:
+
+        \begin{enumerate}
+            \item \( (f+g)(x) = \)
+            \vspace{10pt}
+            \item \( (f-g)(x) = \)
+            \vspace{10pt}
+            \item \( (3 \cdot f)(x) = \)
+            \vspace{10pt}
+            \item \( (f \circ g)(x) = \)
+            \vspace{10pt}
+            \item \( (g \circ f)(x) = \)
+            \vspace{10pt}
+        \end{enumerate}
+        \item Analog für lineare Abbildungen! Gegeben sind die beiden Abbildungen:
+
+        \[
+        f \begin{pmatrix} x \\ y \end{pmatrix} = 
+        \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} 
+        \begin{pmatrix} x \\ y \end{pmatrix}
+        \quad \text{und} \quad
+        g \begin{pmatrix} x \\ y \end{pmatrix} = 
+        \begin{pmatrix} -2 & 4 \\ -3 & 1 \end{pmatrix} 
+        \begin{pmatrix} x \\ y \end{pmatrix}
+        \]
+        
+        Bestimmen Sie für die folgenden Funktionen die Bilder der Vektoren \( \vec{e}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \) und \( \vec{e}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \). Wie lautet dann die Matrix-Gleichung der Abbildung?
+        \vspace{1cm}
+        \begin{enumerate}
+            \item \( (f+g)(\vec{e}_1) = \) \hfill \( (f+g)(\vec{e}_2) = \) \hfill Matrix von \( f+g \): \hfill
+            \vspace{3cm}
+            \item \( (f-g)(\vec{e}_1) = \) \hfill \( (f-g)(\vec{e}_2) = \) \hfill Matrix von \( f-g \):\hfill
+            \vspace{3cm}
+            
+            \item \( (3 \cdot f)(\vec{e}_1) = \) \hfill \( (3 \cdot f)(\vec{e}_2) = \) \hfill Matrix von \( 3 \cdot f \):\hfill
+            \vspace{3cm}
+            \item \( (f \circ g)(\vec{e}_1) = \) \hfill \( (f \circ g)(\vec{e}_2) = \) \hfill Matrix von \( f \circ g \):\hfill
+            \vspace{3cm}
+            \item \( (g \circ f)(\vec{e}_1) = \) \hfill \( (g \circ f)(\vec{e}_2) = \) \hfill Matrix von \( g \circ f \):\hfill
+            \vspace{3cm}
+        \end{enumerate}
+        
+        \item Sei allgemein:
+
+\[
+f \begin{pmatrix} x \\ y \end{pmatrix} = 
+\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} 
+\begin{pmatrix} x \\ y \end{pmatrix}
+\quad \text{und} \quad
+g \begin{pmatrix} x \\ y \end{pmatrix} = 
+\begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix} 
+\begin{pmatrix} x \\ y \end{pmatrix}
+\]
+
+Leiten Sie die Matrix der Abbildung \( f \circ g \) her.
+    \end{enumerate}
+\end{LA}
+
+\clearpage
+Ähnlich wie mit Vektoren kann man auch mit Matrizen rechnen:
+\begin{definition}
+    {Addition und skalare Vielfache von Matrizen}{}
+    Seien 
+\[
+A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} 
+\quad \text{und} \quad 
+B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
+\]
+zwei Matrizen. Dann ist die Summe der beiden Matrizen definiert durch:
+
+\[
+A + B =
+\begin{pmatrix} 
+a_{11} + b_{11} & a_{12} + b_{12} \\ 
+a_{21} + b_{21} & a_{22} + b_{22} 
+\end{pmatrix}
+\]
+
+Sei \( \lambda \in \mathbb{R} \) eine reelle Zahl und 
+
+\[
+A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}
+\]
+
+eine Matrix. Dann ist die Matrix \( \lambda \cdot A \) definiert durch:
+
+\[
+\lambda \cdot A =
+\begin{pmatrix} 
+\lambda \cdot a_{11} & \lambda \cdot a_{12} \\ 
+\lambda \cdot a_{21} & \lambda \cdot a_{22} 
+\end{pmatrix}
+\]
+
+Die Addition und die skalaren Vielfachen von \( 3 \times 3 \)-Matrizen werden analog definiert.
+
+\end{definition}
+
+\begin{bsp}
+    {}{}
+    \[
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} 
++ 
+\begin{pmatrix} -2 & 4 \\ -3 & 1 \end{pmatrix} 
+=
+\begin{pmatrix} -1 & 6 \\ 0 & 5 \end{pmatrix}
+\]
+
+\[
+3 \cdot 
+\begin{pmatrix} 1 & 2 \\ 3 & -4 \end{pmatrix} 
+=
+\begin{pmatrix} 3 & 6 \\ 9 & -12 \end{pmatrix}
+\]
+
+\end{bsp}
+
+Für diese Operationen gelten die üblichen Rechengesetze:
+\begin{multicols}{2}
+    \begin{itemize}
+        %\item \( 1 \cdot A = A \)
+        %\item \( 0 \cdot A = O \)
+        \item \( \lambda \cdot A = A \cdot \lambda \)
+        \item \( \lambda \cdot (\mu \cdot A) = (\lambda \cdot \mu) \cdot A \)
+        \item \( (\lambda + \mu) \cdot A = \lambda \cdot A + \mu \cdot A \)
+        \item \( \lambda \cdot (A + B) = \lambda \cdot A + \lambda \cdot B \)
+        \item \( A + (B + C) = (A + B) + C \)
+        \item \( (A + B) \cdot \vec{v} = A \cdot \vec{v} + B \cdot \vec{v} \)
+        \item \( (\lambda \cdot A) \cdot \vec{v} = \lambda \cdot (A \cdot \vec{v}) \)
+    \end{itemize}
+    \end{multicols}
+    
+    % \textbf{Fazit:} Man kann mit Matrizen rechnen wie mit Zahlen!
+\begin{bsp}
+    {Matrixgleichung}{}
+    Für welche Matrix \( X \) gilt
+
+    \[
+    2 \cdot 
+    \begin{pmatrix} 1 & 2 \\ 1 & 1 \end{pmatrix} 
+    + 3 \cdot X 
+    - \begin{pmatrix} 0 & 2 \\ 2 & 1 \end{pmatrix} 
+    = X \quad ?
+    \]
+
+    So eine Gleichung kann man lösen, als würde man mit Zahlen operieren. Durch Isolieren von \( X \) erhält man:
+
+    \[
+    2X = \begin{pmatrix} 0 & 2 \\ 2 & 1 \end{pmatrix} 
+    - 2 \cdot \begin{pmatrix} 1 & 2 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} -2 & -2 \\ 0 & -1 \end{pmatrix}
+    \]
+
+    % \[
+    % = \begin{pmatrix} 0 - 2 & 2 - 4 \\ 2 - 2 & 1 - 2 \end{pmatrix}
+    % = \begin{pmatrix} -2 & -2 \\ 0 & -1 \end{pmatrix}
+    % \]
+
+    \[
+    X = \frac{1}{2} \cdot \begin{pmatrix} -2 & -2 \\ 0 & -1 \end{pmatrix}
+    = \begin{pmatrix} -1 & -1 \\ 0 & -\frac{1}{2} \end{pmatrix}
+    \]
+\end{bsp}
+
+Das Produkt von zwei Matrizen wird wie folgt definiert:
+\begin{definition}
+    {Produkt von 2x2 Matrizen}{}
+    Seien 
+    \[
+    A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}
+    \quad \text{und} \quad
+    B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
+    \]
+    zwei Matrizen. Dann ist das Produkt der beiden Matrizen definiert durch:
+
+    \[
+    A \cdot B =
+    \begin{pmatrix} 
+    a_{11} b_{11} + a_{12} b_{21} & a_{11} b_{12} + a_{12} b_{22} \\ 
+    a_{21} b_{11} + a_{22} b_{21} & a_{21} b_{12} + a_{22} b_{22}
+    \end{pmatrix}
+    \]
+
+\end{definition}
+
+\begin{bsp}
+    {Berechnung eines Matrixprodukts}{}
+    \vspace*{1cm}
+    \(
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} 
+\cdot 
+\begin{pmatrix} -2 & 4 \\ -3 & 1 \end{pmatrix} = 
+\)
+\vspace*{1cm}
+\end{bsp}
+
+Analog werden auch grössere Matrizen Multipliziert:
+
+\begin{bsp}
+    {Produkt von 3x3-Matrizen}{}
+    \vspace*{1cm}
+    $
+    \begin{pmatrix} 1 & 0 & -1 \\ 2 & 3 & 0 \\ -2 & 2 & 1 \end{pmatrix} 
+    \cdot 
+    \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix} =
+    $
+    \vspace*{1cm}
+\end{bsp}
+
+Vielleicht fragen Sie sich an dieser Stelle, wieso das Produkt von zwei Matrizen so kompliziert definiert ist. Es wäre doch viel simpler, wenn man einfach die einzelnen Einträge miteinander multiplizieren würde!  
+
+Der Grund liegt darin, dass das so definierte Produkt eine wichtige Eigenschaft erfüllt. Es gilt nämlich für alle Matrizen \( A \) und \( B \) und alle Vektoren \( \vec{v} \), dass:
+
+\[
+A \cdot (B \cdot \vec{v}) = (A \cdot B) \cdot \vec{v}
+\]
+
+Die Bedeutung dieser Eigenschaft der Matrix-Multiplikation erschliesst sich, wenn man Matrizen als lineare Abbildungen auffasst.  
+
+Zur Erinnerung:
+
+\begin{definition}
+    {Komposition / Verkettung von Abbildungen}{}
+    Seien \( f \) und \( g \) zwei Abbildungen. Dann ist die Komposition (oder Verkettung) \( f \circ g \) von \( f \) und \( g \) die Abbildung, definiert durch:
+
+    \[
+    (f \circ g)(\vec{v}) = f(g(\vec{v}))
+    \]
+
+
+\end{definition}
+Wenn beispielsweise \( f \) eine Drehung ist und \( g \) eine Spiegelung, dann ist \( f \circ g \) die Abbildung, bei welcher die Punkte zuerst gespiegelt und anschliessend gedreht werden.  
+(Achten Sie auf die Reihenfolge: Bei \( f \circ g \) wird zuerst \( g \) ausgeführt, anschliessend \( f \).)
+
+Nun lässt sich die obengenannte Eigenschaft $A \cdot (B \cdot \vec{v}) = (A \cdot B) \cdot \vec{v}$ so verstehen:
+
+\begin{satz}
+    {Komposition und Matrixmultiplikation}{}
+    Seien \( f \) und \( g \) zwei lineare Abbildungen. Weiter sei \( A \) die Matrix von \( f \) und \( B \) jene von \( g \).  
+
+    Dann ist \( f \circ g \) auch eine lineare Abbildung, und die dazugehörige Matrix ist:
+    $
+    A \cdot B
+    $
+
+\end{satz}
+\begin{bsp}
+    {}{}
+    Sei 
+    \[
+    A = \begin{pmatrix} 1 & -2 \\ 3 & 4 \end{pmatrix}
+    \]
+    die Matrix der linearen Abbildung \( f \) und 
+    \[
+    B = \begin{pmatrix} 5 & -6 \\ 7 & 8 \end{pmatrix}
+    \]
+    jene der Abbildung \( g \).  
+
+    Dann hat die Abbildung \( f \circ g \) die Matrix:
+    \begin{align*}
+    A \cdot B &=
+    \begin{pmatrix} 1 & -2 \\ 3 & 4 \end{pmatrix}
+    \cdot
+    \begin{pmatrix} 5 & -6 \\ 7 & 8 \end{pmatrix}
+    \\
+    &=
+    \begin{pmatrix} 
+    1 \cdot 5 + (-2) \cdot 7 & 1 \cdot (-6) + (-2) \cdot 8 \\ 
+    3 \cdot 5 + 4 \cdot 7 & 3 \cdot (-6) + 4 \cdot 8 
+    \end{pmatrix}\\
+    &=
+    \begin{pmatrix} 
+    -9 & -22 \\ 43 & 14 
+    \end{pmatrix}
+\end{align*}
+
+\end{bsp}
+
+\clearpage
+\begin{ueb}
+    {}{}
+    \begin{enumerate}
+        \item Sei \( f: \mathbb{R}^2 \to \mathbb{R}^2 \) die Spiegelung an der Geraden \( y = x \) und \( g: \mathbb{R}^2 \to \mathbb{R}^2 \) die Drehung um den Ursprung um \( 90^\circ \) gegen den Uhrzeigersinn.
+        \begin{enumerate}
+            \item Bestimmen Sie die Matrix \( A \) von \( f \) und die Matrix \( B \) von \( g \).
+            \item Bestimmen Sie die Matrix \( C \) der Verkettung \( g \circ f \).
+            \item \( C \) ist die Matrix einer Spiegelung. An welcher Achse wird gespiegelt?
+            \item Bestimmen Sie die Matrix \( D \) der Verkettung \( f \circ g \) (andere Reihenfolge).
+            \item Auch \( D \) ist die Matrix einer Spiegelung. Was ist diesmal die Achse?
+        \end{enumerate}
+    
+        \item In Aufgabe 1. wurde deutlich, dass die Matrixmultiplikation im Gegensatz zum Produkt von Zahlen nicht kommutativ ist (das heisst: im Allgemeinen gilt \( A \cdot B \neq B \cdot A \)).
+        Ein weiterer Unterschied zur Multiplikation von Zahlen zeigt sich in diesen Übungen:
+        \begin{enumerate}
+            \item Berechnen Sie  
+            \[
+            \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix} 
+            \cdot 
+            \begin{pmatrix} -2 & 6 \\ 1 & -3 \end{pmatrix}
+            \]
+            \item Berechnen Sie  
+            \[
+            \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}^2 
+            =
+            \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} 
+            \cdot 
+            \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+            \]
+        \end{enumerate}
+    
+        \item Sei \( f: \mathbb{R}^3 \to \mathbb{R}^3 \) die Spiegelung an der $yz$-Ebene. 
+        \begin{enumerate}
+            \item Bestimmen Sie die Matrix \( M \) von \( f \) und berechnen Sie anschliessend \( M^2 \).
+            \item Interpretieren Sie das Resultat.
+        \end{enumerate}
+    
+        \item Sei \( A \) die \( 2 \times 2 \)-Matrix der Drehung um den Winkel \( \varphi \) um den Ursprung und \( B \) jene der Drehung um den Winkel \( \psi \) um den Ursprung.
+        \begin{enumerate}
+            \item Geben Sie die Matrizen \( A \) und \( B \) an.
+            \item Berechnen Sie anschliessend \( A \cdot B \).
+        \end{enumerate}
+    \end{enumerate}
+    
+\end{ueb}
+
+\begin{ueb}
+    {Programmieraufgabe}{}
+    Ergänzen Sie die Klasse \lstinline|matrix2x2| um die Methoden
+    \begin{itemize}
+        \item \lstinline|plus(self, b)| für die Addition zweier Matrizen.
+        \item \lstinline|minus(self, b)| für die Subtraktion zweier Matrizen. 
+        \item \lstinline|mal_skalar(self, x)| für die Multiplikation mit einem Skalar (eine Zahl $x$).
+        \item \lstinline|mal_mat(self, b)| für die Multiplikation zweier Matrizen.
+    \end{itemize}
+\end{ueb}
+
+\begin{ueb}
+    {Weiterführenden Programmieraufgabe: Unterklassen}{}
+    Wie kann man Drehmatrizen als einen Spezialfall von Matrizen in Python realisieren? Nun das geht mit einer sogenannten Unterklasse. Der Code dazu lautet wie folgt:
+    \begin{lstlisting}
+class drehmatrix2x2(matrix2x2):
+    def __init__(self, winkel):
+        a = math.cos(winkel)
+        b = math.sin(winkel)
+        super().__init__(a, -b, b, a))
+        self.winkel = winkel \end{lstlisting}
+
+ Die Erklärung dazu:
+\begin{itemize}
+    \item In Zeile 1 wird die Klasse mit dem Namen \lstinline|drehmatrix2x2| definiert. Der Verweis auf \lstinline|matrix2x2| in der Klammer legt fest, dass es sich dabei um eine Unterklasse von \lstinline|matrix2x2| handelt.
+    \item In Zeile 2 wird der Konstruktor definiert.
+    \item Zeilen 3 und 4 definieren zwei Hilfsvariablen, um die Einträge der Matrix zu bestimmen. Für die Verwendung der Funktionen \lstinline|math.sin(winkel)| und \lstinline|math.cos(winkel)|, muss davor die Bibliothek \lstinline|import math| importiert werden.
+    \item Mit \lstinline|super()| wird auf die Methoden der Oberklasse zugegriffen. In Zeile 5 wird also der Konstruktor der Klasse \lstinline|matrix2x2| aufgerufen, damit ein Matrix-Objekt gebildet wird.
+    \item In Zeile 6 wird ein zusätzlich Attribut für Drehmatrizen definiert. Mit \lstinline|d.winkel| kann fortan auf den Drehwinkel zugegriffen werden.
+\end{itemize}
+
+\begin{enumerate}
+    \item Kopieren Sie den Code und versuchen Sie, eine Drehmatrix mit einer anderen Matrix zu multiplizieren.
+    \item Die Matrix einer Spiegelung \( S_g \) an einer Ursprungsgeraden mit dem Winkel \( \alpha \) zur positiven $x$-Achse ist:
+    \[
+    S_g =
+    \begin{pmatrix} 
+    \cos 2\alpha & \sin 2\alpha \\ 
+    \sin 2\alpha & -\cos 2\alpha 
+    \end{pmatrix}
+    \]
+
+    Definieren Sie eine neue Unterklasse \lstinline|spiegelmatrix2x2(matrix2x2)|.
+    
+\end{enumerate} 
+
+
+\end{ueb}
+
+
+
+
+
+
+\clearpage
+\emph{Lösungen:}
+\begin{enumerate}
+    \item \textbf{Spiegelung und Drehung}
+    \begin{enumerate}
+        \item \( A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \), \quad \( B = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \)
+        \item \( C = B \cdot A = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \)
+        \item An der $y$-Achse
+        \item \( D = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \)
+        \item An der $x$-Achse
+    \end{enumerate}
+
+    \item \textbf{Produkte}
+    \begin{enumerate}
+        \item \[
+        \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix} 
+        \cdot 
+        \begin{pmatrix} -2 & 6 \\ 1 & -3 \end{pmatrix} 
+        =
+        \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+        \]
+        Obwohl das Produkt die Nullmatrix ergibt, ist keiner der beiden Faktoren die Nullmatrix!
+        \item \[
+        \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}^2 
+        =
+        \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+        \]
+    \end{enumerate}
+
+    \item \textbf{Matrix der Spiegelung in \( \mathbb{R}^3 \)}
+    \begin{enumerate}
+        \item \[
+        M = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, 
+        \quad M^2 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+        \]
+        Das ist die Matrix der Identität \( \text{id}(\vec{v}) = \vec{v} \). Das muss so sein, weil jeder Punkt nach zweimaligem Spiegeln auf sich selbst abgebildet wird.
+    \end{enumerate}
+
+    \item \textbf{Drehungsmatrizen}
+    \begin{enumerate}
+        \item \[
+        A = \begin{pmatrix} \cos(\varphi) & -\sin(\varphi) \\ \sin(\varphi) & \cos(\varphi) \end{pmatrix}, 
+        \quad B = \begin{pmatrix} \cos(\psi) & -\sin(\psi) \\ \sin(\psi) & \cos(\psi) \end{pmatrix}
+        \]
+
+        \item Berechnung von \( A \cdot B \):
+
+        \[
+        A \cdot B =
+        \begin{pmatrix} 
+        \cos(\varphi) \cos(\psi) - \sin(\varphi) \sin(\psi) & -(\sin(\varphi) \cos(\psi) + \cos(\varphi) \sin(\psi)) \\ 
+        \sin(\varphi) \cos(\psi) + \cos(\varphi) \sin(\psi) & \cos(\varphi) \cos(\psi) - \sin(\varphi) \sin(\psi) 
+        \end{pmatrix}
+        \]
+
+        \[
+        =
+        \begin{pmatrix} \cos(\varphi + \psi) & -\sin(\varphi + \psi) \\ \sin(\varphi + \psi) & \cos(\varphi + \psi) \end{pmatrix}
+        \]
+
+        Das Resultat ist die Matrix einer Drehung um den Winkel \( \varphi + \psi \).  
+        Wobei für den letzten Schritt die Additionstheoreme verwendet wurden:
+
+        \[
+        \sin(\alpha + \beta) = \sin(\alpha) \cos(\beta) + \cos(\alpha) \sin(\beta)
+        \]
+        
+        \[
+        \cos(\alpha + \beta) = \cos(\alpha) \cos(\beta) - \sin(\alpha) \sin(\beta)
+        \]
+    \end{enumerate}
+\end{enumerate}

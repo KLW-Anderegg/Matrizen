@@ -1,0 +1,323 @@
+\subsection{LGS mit nicht-invertierbarer Matrix}
+
+Im vorangegangenen Abschnitt haben wir gesehen, dass man Gleichungssysteme leicht mit Hilfe der inversen Matrix lösen kann. In diesem Kapitel wollen wir den Fall untersuchen, dass die Matrix nicht invertierbar ist. 
+
+\begin{LA}
+{}{}
+In dieser Lernaufgabe untersuchen wir Gleichungssysteme der Form
+$$ A\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \vec{b} \qquad \text{ bzw. } \qquad B\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \vec{b}$$
+mit den (nicht invertierbaren) Matrizen
+$$ A = \begin{pmatrix}
+    4 & -6\\
+    -6 & 9
+\end{pmatrix} \qquad \text{ bzw. } \qquad B = \begin{pmatrix}
+    12 & 20\\
+    9 & 15
+\end{pmatrix}$$
+
+
+\textbf{Teil 1}: der Kern der Matrix
+
+\begin{enumerate}
+    \item Finden Sie drei Lösungen der Gleichung $A\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    0\\0
+\end{pmatrix}$
+\item Zeigen Sie, dass die drei Lösungen alle auf einer Geraden liegen und diese Gerade der Menge $\left\{t\cdot \begin{pmatrix}
+    3\\2
+\end{pmatrix} \mid t \in \R\right\}$ entspricht.
+\item Betrachten Sie nun die Matrix $B$. Bestimmen die Lösungsmenge der Gleichung $B\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    0\\0
+\end{pmatrix}$.
+\end{enumerate}
+
+\textbf{Teil 2:} das Bild der Matrix
+\begin{enumerate}
+    \item Berechnen Sie $A \cdot \vec{v}$ für drei verschiedene Vektoren $\vec{v} \in \R^2$.
+    \item Zeigen Sie, dass die drei Vektoren $A \cdot \vec{v}$ alle auf einer Geraden liegen und diese Gerade der Menge $\left\{t\cdot \begin{pmatrix}
+    2\\-3
+\end{pmatrix} \mid t \in \R\right\}$ entspricht.
+    \item Betrachten Sie nun die Matrix $B$. Bestimmen Sie die Menge aller Bilder $B \cdot \vec{v}$ für $\vec{v} \in \R^2$.
+
+\end{enumerate}
+
+\textbf{Teil 3:}
+\begin{enumerate}
+    \item Erklären Sie in Bezugnahme auf `Teil 2', wieso das Gleichungssystem 
+    $$A\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    10\\10
+\end{pmatrix}$$
+keine Lösung hat.
+\item Der Vektor $\begin{pmatrix}
+    5\\-2
+\end{pmatrix}$ ist eine Lösung des Gleichungssystems
+$$A\cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    32\\-48
+\end{pmatrix}$$
+Erklären Sie in Bezugnahme auf `Teil 1', wieso jeder Vektor der Form
+$$\begin{pmatrix}
+    5\\-2
+\end{pmatrix} + t \cdot \begin{pmatrix}
+    3\\2
+\end{pmatrix}$$
+mit $t \in \R$ eine Lösung des Gleichungssystems ist.
+\end{enumerate}
+
+\textbf{Teil 4:}
+
+Entscheiden Sie, ob die folgenden Gleichungssysteme Lösungen haben und wenn ja, geben Sie die Lösungsmenge an.
+\begin{enumerate}
+    \item $B \cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    6\\8
+\end{pmatrix}$
+    \item $B \cdot \begin{pmatrix}
+    x\\y
+\end{pmatrix}= \begin{pmatrix}
+    8\\6
+\end{pmatrix}$
+\end{enumerate}
+\end{LA}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+Im folgenden werden einige neue Begriffe eingeführt, mit denen man die Lösungsmenge eines LGS mit nicht-invertierbarer Matrix beschreiben kann. Diese Begriffe sind wichtig, um die Lösungsmenge eines LGS zu verstehen und zu beschreiben.
+
+\begin{definition}
+    {Kern und Bild}{}
+   
+Sei \( A\) eine $2\times2$-Matrix. 
+
+Die Menge aller Vektoren, die auf den Nullvektor abgebildet werden, nennt man den \emph{Kern} von \( A \) und schreibt dafür:
+\[
+\ker(A) = \left\{ \vec{v} \in \mathbb{R}^2 \mid A\cdot \vec{v} = \vec{0} \right\}
+\]
+
+Die Menge aller Bilder $A\cdot \vec{v}$ von \( A \) nennt man das \emph{Bild} von \( A \) und schreibt dafür:
+\[
+\operatorname{im}(f) = \left\{ A\cdot \vec{v} \mid \vec{v} \in \mathbb{R}^2 \right\}
+\]
+Die Bezeichnung \( \operatorname{im} \) steht für \emph{image} (englisch für Bild).
+
+
+\end{definition}
+
+
+\begin{bsp}
+    {Kern und Bild von $A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix}$ }{}
+
+
+Dreimal die erste Spalte minus die zweite ergibt den Nullvektor, also ist:
+\[
+\ker(A) = \left\{ t \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+\]
+
+Beide Spalten sind Vielfache des Vektors $\begin{pmatrix} 1 \\ 3 \end{pmatrix}$.  
+Also gilt:
+\[
+\operatorname{im}(A) = \left\{ t \begin{pmatrix} 1 \\ 3 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+\]
+
+\end{bsp}
+
+\begin{bsp}
+{Kern und Bild von $B = \begin{pmatrix} 1 & 3 \\ 4 & -1 \end{pmatrix}.$}{}
+
+Die Matrix ist invertierbar, weil $\det(B)  = -13 \neq 0$. 
+Also gilt:
+
+\[
+\ker(B) = \left\{B^{-1}\cdot \vec{0} \right\} = \left\{ \vec{0} \right\}.
+\]
+und 
+\[
+\operatorname{im}(B)  = \mathbb{R}^2.
+\]
+
+\end{bsp}
+
+\begin{bsp}
+{Kern und Bild von $N = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}.$}{}
+
+Die Matrix $N$ bildet jeden Vektor auf den Nullvektor ab.
+Also gilt:
+\[
+\ker(N) = \R^2.
+\]
+und 
+\[
+\operatorname{im}(N)  = \left\{\vec{0}\right\}.
+\]
+
+\end{bsp}
+
+Mit diesen Begriffen kann man die Lösungsmenge eines LGS mit nicht-invertierbarer Matrix beschreiben.
+\begin{satz}{Lösung von LGS }{}
+Sei \( A \) eine $2\times2$-Matrix und \( \vec{b} \in \mathbb{R}^2 \). Dann gilt:
+\begin{itemize}
+    \item Falls $A$ invertierbar ist, dann hat das LGS \( A\cdot \vec{x} = \vec{b} \) genau eine Lösung, nämlich \( \vec{x} = A^{-1}\cdot \vec{b} \).
+    \item Falls $A$ nicht invertierbar ist, dann gilt:
+\begin{itemize}
+    \item Wenn \( \vec{b} \notin \operatorname{im}(A) \), dann hat das LGS \( A\cdot \vec{x} = \vec{b} \) keine Lösung.
+    \item Wenn \( \vec{b} \in \operatorname{im}(A) \), dann hat das LGS \( A\cdot \vec{x} = \vec{b} \) unendlich viele Lösungen. 
+    \item Ist \( \vec{x}_0 \) eine Lösung des LGS \( A\cdot \vec{x} = \vec{b} \), dann ist die Menge aller Lösungen gegeben durch:
+    \[
+    \left\{ \vec{x}_0 + \vec{v} \mid \vec{v} \in \ker(A) \right\}.
+    \]
+\end{itemize}
+\end{itemize}
+\end{satz}
+
+\begin{bsp}
+{ $ \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \vec{x} = \begin{pmatrix}
+    8\\ 16
+\end{pmatrix}$ }{}
+
+\vspace*{7 cm}
+% Sei $A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} $. 
+% Das Bild von $A$ ist die Gerade durch den Nullvektor in Richtung $\begin{pmatrix} 1 \\ 3 \end{pmatrix}$.
+% Der Vektor $\begin{pmatrix} 8 \\ 16 \end{pmatrix}$ liegt nicht auf dieser Geraden, also hat das LGS keine Lösung.
+\end{bsp}
+
+\begin{bsp}
+{$\begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} \cdot \vec{x} = \begin{pmatrix}
+    8\\ 24
+\end{pmatrix}$ }{}
+
+\vspace*{12 cm}
+
+% Sei wieder $A = \begin{pmatrix} 1 & 3 \\ 3 & 9 \end{pmatrix} $. 
+% Der Vektor $\begin{pmatrix} 8 \\ 24 \end{pmatrix}$ liegt im Bild von $A$. 
+
+% Der Kern von $A$ ist gegeben durch:
+% \[
+% \ker(A) = \left\{ t \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+% \]
+
+
+% Eine Lösung des LGS ist $\begin{pmatrix} 2 \\ 2 \end{pmatrix}$.
+
+% Die gesamte Lösungsmenge ist gegeben durch:
+% \[
+% \left\{ \begin{pmatrix} 2 \\ 2 \end{pmatrix} + t \begin{pmatrix} 3 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}.
+% \]
+\end{bsp}
+
+\clearpage
+
+\begin{ueb}
+    {}{}
+
+\begin{enumerate}
+  \item Bestimmen Sie den Kern und das Bild der folgenden Matrizen.  
+  \begin{enumerate}
+    \item \( A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \)
+    \item \( B = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \)
+    \item \( C = \begin{pmatrix} 2 & 12 \\ -1 & -6 \end{pmatrix} \)
+    \item \( D = \begin{pmatrix} -6 & 7 \\ 12 & -14 \end{pmatrix} \)
+    \item \( E = \begin{pmatrix} 1 & 3 \\ 0 & 0 \end{pmatrix} \)
+  \end{enumerate}
+
+  \item Geben Sie die Lösungsmenge der folgenden LGS an. Die Matrizen beziehen sich auf die Aufgabe 1.
+  \begin{enumerate}
+    \item \( A \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \)
+    \item  \( B \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \)
+    \item \( C \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 3 \\ 20 \end{pmatrix} \)
+    \item \( D \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -5 \\ 10 \end{pmatrix} \)
+    \item \( E \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \)
+  \end{enumerate}
+
+  \item Sei \( f \) die Projektion auf die Gerade \( y = x \) in Richtung  
+  \( \vec{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} \).  
+  Bestimmen Sie den Kern und das Bild von \( f \).
+
+  \item Geben Sie eine Matrix an, deren Kern die Gerade  
+  \( g \colon \vec{r}(t) = t \begin{pmatrix} 1 \\ 2 \end{pmatrix} \)  
+  und deren Bild die \( y \)-Achse ist.
+
+  \item Geben Sie eine Matrix \( A \) an, deren Kern und Bild übereinstimmen.  
+  Was ergibt \( A^2 \)?
+
+  \item Sei \( f \) die Spiegelung an der \( xz \)-Ebene.  
+  Bestimmen Sie den Kern und das Bild.
+
+  \item Sei \( f \) die orthogonale Projektion auf die \( xz \)-Ebene.  
+  Bestimmen Sie den Kern und das Bild.
+
+  \item \textbf{Challenge:}
+  
+    Beweisen Sie die folgende Aussage:  
+    Sei \( f \) eine lineare Abbildung mit \( \ker(f) = \{ \vec{0} \} \).  
+    Dann ist \( f \) injektiv.\\
+    \emph{Tipp:} Injektiv bedeutet: Aus \( f(\vec{v}) = f(\vec{w}) \) folgt \( \vec{v} = \vec{w} \).  
+    Betrachten Sie \( f(\vec{v} - \vec{w}) \).
+
+\end{enumerate}
+
+\end{ueb}
+
+\clearpage
+\emph{Lösungen:}
+\begin{enumerate}
+  \item 
+  \begin{enumerate}
+    \item \( \ker(A) = \left\{ \vec{0} \right\} \), \( \operatorname{im}(A) = \mathbb{R}^2 \)
+    \item \( \ker(B) = \mathbb{R}^2 \), \( \operatorname{im}(B) = \left\{ \vec{0} \right\} \)
+    \item \( \ker(C) = \left\{ t\begin{pmatrix} 6 \\ -1 \end{pmatrix} | t\in\mathbb{R}  \right\}  ,  \operatorname{im}(C) =  \left\{ t\begin{pmatrix} 2 \\ -1  \end{pmatrix} | t\in\mathbb{R}  \right\}\)
+    \item \( \ker(D) = \left\{ t\begin{pmatrix} 7 \\ 6 \end{pmatrix} | t\in\mathbb{R}  \right\}  ,  \operatorname{im}(D) =  \left\{ t\begin{pmatrix} -1 \\ 2  \end{pmatrix} | t\in\mathbb{R}  \right\}\)
+    \item \( \ker(E) = \left\{ t\begin{pmatrix} 3 \\ -1 \end{pmatrix} | t\in\mathbb{R}  \right\}  ,  \operatorname{im}(E) =  \left\{ t\begin{pmatrix} 1 \\ 0  \end{pmatrix} | t\in\mathbb{R}  \right\}\)
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item $\LL = \left\{\begin{pmatrix}
+            0 \\ \frac{1}{2}
+        \end{pmatrix}\right\}$
+        \item $\LL = \R^2$
+        \item $\LL = \emptyset$
+        \item $\LL = \left\{\begin{pmatrix}
+            \frac{5}{6} \\ 0
+        \end{pmatrix} + t\begin{pmatrix}
+            7 \\ 6
+        \end{pmatrix} \mid t \in \R\right\}$
+        \item $\LL = \left\{\begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix} + t\begin{pmatrix}
+            3 \\ -1
+        \end{pmatrix} \mid t \in \R\right\}$
+    \end{enumerate}
+    \item \( \ker(f) = \left\{ t \begin{pmatrix} 1 \\ -1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\} \) und $\operatorname{im}(f) = \left\{ t \begin{pmatrix} 1 \\ 1 \end{pmatrix} \;\middle|\; t \in \mathbb{R} \right\}$.
+    \item Z.B. \( \begin{pmatrix} 0 & 0 \\ 2 & -1 \end{pmatrix} \)
+    \item Z.B. \( \begin{pmatrix} 0 & 0 \\  1 & 0\end{pmatrix} \). Dann ist logischerweise $A^2 = \begin{pmatrix} 0 & 0 \\  0 & 0\end{pmatrix}$.
+    \item \( \ker(f) = \left\{ \vec{0} \right\} \) und \( \operatorname{im}(f) = \R^3 \)
+    \item \( \ker(f) = \left\{ \begin{pmatrix} 0 \\ y \\ 0 \end{pmatrix} \;\middle|\; y \in \mathbb{R} \right\} \) und \( \operatorname{im}(f) = \left\{ \begin{pmatrix} x \\ 0 \\ z \end{pmatrix} \;\middle|\; x,z \in \mathbb{R} \right\} \)
+\end{enumerate}
